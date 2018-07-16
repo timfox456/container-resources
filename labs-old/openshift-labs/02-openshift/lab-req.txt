@@ -1,0 +1,27 @@
+# Openshift Labs 2.1, 2.2, 2.3
+===============
+
+
+### Prerequisites before starting:
+ * A computer system with internet connectivity and web browser installed.
+ * O/S: Windows, Mac, or Linux
+ * A Github account.
+ * Log in to user's Github account in a browser window.
+ * Git software installed on the local system.
+ * A free Openshift Online starter account.
+ * Openshift CLI installed to system as described in Openshift Lab 1.3.
+ * A text editor of your choice installed to your system.
+  * Note for Windows users: do not use notepad as the text editor. If you do not have another text editor installed, you should download and install a text editor.
+  * Some example text editors:
+     * Notepad ++ - https://notepad-plus-plus.org/
+     * Atom - https://atom.io/
+     * Brackets - http://brackets.io/
+     * Visual studio code - https://code.visualstudio.com/
+     * Vim text editor - https://www.vim.org/
+ 
+ 
+ 
+ ### Participants should have completed Openshift Labs 1.1, 1.2, and 1.3 prior to this section.
+ 
+ 
+ 

@@ -21,6 +21,11 @@ Instructor Notes:
 
 Participant Notes:
 
+Docker's name is almost synonymous with containers.   While arguably Docker's contribution
+is not the largest or the most significant to the container ecosystem, it is the one that
+is closest to the developer -- as the developer relies on Docker tools to create container
+application images. 
+
 ---
 
 ##  Docker uses the Host Kernel
@@ -40,6 +45,13 @@ Notes:
 Instructor Notes:
 
 Participant Notes:
+
+It's important to understand how containers work.  They generally use the host kernel. We say
+generally because in fact on non-Linux platforms the kernel is usually virtualized.  
+
+The situation is a little complicated when it comes to Windows, because there are multiple 
+incompatible Windows kernels for various flavors of Windows.  Because of that, most Windows
+"Native" containers run in virtualized mode except in production.
 
 ---
 
@@ -99,6 +111,10 @@ Instructor Notes:
 
 Participant Notes:
 
+Native Windows Containers are not all that common at this time, but Microsoft is pushing them because they
+realize that the Windows platform needs to be have this capability to continue to be relevant as a server-side
+platform.  
+
 ---
 
 ## Docker on Windows Use Cases
@@ -115,6 +131,12 @@ Notes:
 Instructor Notes:
 
 Participant Notes:
+
+This slides shows the relative use cases of various use cases on Windows. Docker realizes that Windows is its most common platform for development, even for applications 
+that will not be deployed on Windows.  Because of this, the Windows platform has the richest number of options.  Windows users need to choose between developing 
+"native" Windows server containers or Linu containers.  The advantage of the native containers is that there is minimal delay in starting a native container,
+similar to what one would expect on Linux platforms.
+
 
 ---
 
@@ -137,6 +159,14 @@ Notes:
 Instructor Notes:
 
 Participant Notes:
+
+Apple is an extremely popular platform for development, so it comes as no surprise that Docker has versions for this platform.  As Apple has no real presence in the 
+data center, it is strictly for development.
+
+While it's often thought that Apple is built on top of Unix, it has chosen BSD Unix as its base, which is not compatible with the Linux Kernel.  So, like Windows,
+Mac users must run in a VM, though unlike Windows, all modern Mac systems are capable of running virtualization without any special actions. 
+
+There is no way to run "native" Windows containers on Mac, except for in a VM.  This isn't a common use case.
 
 ---
 
@@ -171,6 +201,12 @@ Instructor Notes:
 
 Participant Notes:
 
+If Docker's container image format is its first great contribution, Docker Hub and similar container registries are the second. The fact that users can
+share and get container images from Docker Hub is a huge catalyst to containers, as it allows code to be shared across multiple teams.  More importantly,
+it means there's no reason to re-invent the wheel. In fact, Docker Hub is designed to minimize re-invention of any kind.
+
+We will see later how Docker's build process allows us to leverage other people's work.
+
 ---
 
 ## Container Registries
@@ -185,6 +221,13 @@ Notes:
 Instructor Notes:
 
 Participant Notes:
+
+Corporate environments invariably have Docker Hub blocked, much like Maven repository coordinate and Github itself. Because of this, companies are able to use
+private container registries.  In fact, this is encouraged in Docker and rarely will someone attempt to put something out on public Docker Hub unless there is a
+very good reason to do so.
+
+The doesn't mean that one can't use Docker Hub.  If you want to start with, say, a basic linux image, using something from Docker Hub as a start makes
+a lot of sense.
 
 ---
 
@@ -204,6 +247,9 @@ Notes:
 Instructor Notes:
 
 Participant Notes:
+
+Anyone who has used Github and Git will find the Docker syntax easy to remember.  Instead of using a copy of the source code repository, Docker will
+store the binary container image (usually a hash) in a local place on the user's hard drive.
 
 ---
 
@@ -229,6 +275,12 @@ Instructor Notes:
 
 Participant Notes:
 
+Running "docker ls" will show all the containers that you currently have.  Note that you may see containers show up that aren't in fact direclty being used.
+That's because the docker pull will recursively bring down containers and store them.
+
+Note that every time you start a container, you will continue to see that container in docker ls.   Do not be alarmed, because only the differences between
+the original image and the stopped container will be stored.  
+
 ---
 
 
@@ -247,6 +299,12 @@ Notes:
 Instructor Notes:
 
 Participant Notes:
+
+Docker containers can be started with "run" -- this is because it's better to look at running a container as more like an app than a VM.  
+
+Alpine is extremely popular as mini-sized Linux to start containers.  While running with a starter like ubuntu certainly gives a lot more
+power plus the familiarity with ordinary tools like "bash", alpine is great when all we really need is just enough of an OS to run our 
+application.
 
 ---
 
@@ -271,6 +329,11 @@ Notes:
 Instructor Notes:
 
 Participant Notes:
+
+Many users ask how to "ssh" to the container.  This isn't typically how we accomplish this, instead, what we do is to attach our terminal to the container.
+
+Some containers we probably want to automatically stop when we are not longer using the container. This depends a lot of the use case.  If the container is
+more of background service, then we probably do not want to do this.  However, if it is an interactive application then this is not a bad idea.
 
 ---
 
@@ -301,6 +364,10 @@ Instructor Notes:
 
 Participant Notes:
 
+Running "docker rm" is a good way to clean up and de-clutter our container registry.  That said, one should not expect to save lots of space by running docker rm,
+because even larger container images are stored in the base repository, and deleing our derived images from these will not save an extraordinary amount of space.  
+Remember, Docker overlays changes from one filesystem to the next, so only the changes will be removed..
+
 ---
 
 ## Removing a Container
@@ -317,6 +384,11 @@ Notes:
 Instructor Notes:
 
 Participant Notes:
+
+We differentiate between the container image and the container instance.  The image is not going to be directly deleted this way, but the instance
+will be. 
+
+Knowing the difference between instance and image is extremely important.
 
 --- 
 
